@@ -10,3 +10,38 @@
   width: 100%;
   height: 100%;
 }
+
+main {
+  padding-top: 0;
+}
+
+h2, h3, h4 {
+  color: var(--accent)
+}
+
+ul {
+  padding-left: 1.5rem
+}
+
+/*  light theme (default) */
+:root {
+  --bg: #f9cf72;
+  --accent-bg: #fffaf5;
+  --text: #212121;
+  --text-light: #585858;
+  --border: #898EA4;
+  --accent: #ce1919;
+  --accent-hover: #1266e2;
+  --accent-text: var(--bg);
+  --code: #d81b60;
+  --preformatted: #444;
+  --marked: #ffdd33;
+  --disabled: #efefef;
+}
+
+/* dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+  }
+}
