@@ -23,14 +23,26 @@ ul {
   padding-left: 1.5rem
 }
 
+summary {
+  color: var(--accent);
+}
+
+.mokuji ul {
+  font-size: 1.0rem;
+}
+
+.mokuji li {
+  list-style-type: circle;
+}
+
 /*  light theme (default) */
 :root {
-  --bg: #f9cf72;
+  --bg: #ffe09a;
   --accent-bg: #fffaf5;
   --text: #212121;
   --text-light: #585858;
   --border: #898EA4;
-  --accent: #ce1919;
+  --accent: #ff4800;
   --accent-hover: #1266e2;
   --accent-text: var(--bg);
   --code: #d81b60;
