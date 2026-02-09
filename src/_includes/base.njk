@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset='utf-8'>
+  <meta name="description" content="{{ description or 'やまこ屋です。まんがやイラストを中心に制作しています。' }}">
+  <meta name="author" content="Yamako">
+  <title>{{ title or 'やまこ屋' }}</title>
+  <meta content='width=device-width, initial-scale=1' name='viewport'>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title or 'やまこ屋' }}">
+  <meta name="twitter:image" content="{{ ogImage or 'https://prof.yamako-ya.com/images/yamakoya-logo-mini.png' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prof.yamako-ya.com">
+  <meta property="og:title" content="{{ title or 'やまこ屋' }}">
+  <meta property="og:description" content="{{ description or 'やまこ屋です。まんがやイラストを中心に制作しています。' }}">
+  <meta property="og:image" content="{{ ogImage or 'https://prof.yamako-ya.com/images/yamakoya-logo-mini.png' }}">
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <link rel="stylesheet" href="{{ cssPath or 'main.css' }}">
+  {% if extraCss %}
+  <link rel="stylesheet" href="{{ extraCss }}">
+  {% endif %}
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="android-chrome-192x192.png">
+  {% if customStyles %}
+  <style>
+{{ customStyles | safe }}
+  </style>
+  {% endif %}
+</head>
+<body>
+
+{% block content %}
+{{ content | safe }}
+{% endblock %}
+
+<footer>
+  <p>Copyright 2021-2026 Yamako.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+---
+layout: base.njk
+pagination:
+  data: 4koma
+  size: 10
+  alias: comics
+permalink: "nakayosi-oneesan-tati/4koma-list{% if pagination.pageNumber > 0 %}-{{ pagination.pageNumber + 1 }}{% endif %}.html"
+title: "なかよし おねえさんたち 4コマ一覧 - やまこ屋"
+description: "やまこ屋です。大人女性ふたりのまんが「なかよし おねえさんたち」4コマ一覧です。"
+ogImage: "https://prof.yamako-ya.com/images/title_cover.jpg"
+cssPath: "../main.css"
+extraCss: "4koma-list.css"
+---
+
+<main>
+  <nav>
+    <a href="../index.html">トップ</a>
+    <a href="index.html">作品紹介</a>
+  </nav>
+
+  <h1>なかよし おねえさんたち 4コマ集</h1>
+
+  <p>全{{ 4koma.length }}話を掲載しています。{% if pagination.pageNumber > 0 %}(ページ {{ pagination.pageNumber + 1 }}/{{ pagination.pages.length }}){% endif %}</p>
+
+  <nav class="pagination" aria-label="ページナビゲーション">
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}" rel="prev">« まえ</a>
+    {% else %}
+      <span class="disabled">« まえ</span>
+    {% endif %}
+
+    {% set currentPage = pagination.pageNumber + 1 %}
+    {% set totalPages = pagination.pages.length %}
+    {% set delta = 2 %}
+    
+    {% if totalPages <= 7 %}
+      {# 7ページ以下の場合は全て表示 #}
+      {% for pageEntry in pagination.pages %}
+        {% if loop.index0 == pagination.pageNumber %}
+          <span class="current" aria-current="page">{{ loop.index }}</span>
+        {% else %}
+          <a href="{{ pagination.hrefs[loop.index0] }}">{{ loop.index }}</a>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {# 最初のページ #}
+      {% if currentPage == 1 %}
+        <span class="current" aria-current="page">1</span>
+      {% else %}
+        <a href="{{ pagination.hrefs[0] }}">1</a>
+      {% endif %}
+      
+      {# 左側の省略記号 #}
+      {% if currentPage > delta + 2 %}
+        <span class="ellipsis">...</span>
+      {% endif %}
+      
+      {# 真ん中のページ群 #}
+      {% for i in range(2, totalPages) %}
+        {% if i >= currentPage - delta and i <= currentPage + delta %}
+          {% if i == currentPage %}
+            <span class="current" aria-current="page">{{ i }}</span>
+          {% else %}
+            <a href="{{ pagination.hrefs[i - 1] }}">{{ i }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      
+      {# 右側の省略記号 #}
+      {% if currentPage < totalPages - delta - 1 %}
+        <span class="ellipsis">...</span>
+      {% endif %}
+      
+      {# 最後のページ #}
+      {% if currentPage == totalPages %}
+        <span class="current" aria-current="page">{{ totalPages }}</span>
+      {% else %}
+        <a href="{{ pagination.hrefs[totalPages - 1] }}">{{ totalPages }}</a>
+      {% endif %}
+    {% endif %}
+
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}" rel="next">つぎ »</a>
+    {% else %}
+      <span class="disabled">つぎ »</span>
+    {% endif %}
+  </nav>
+
+  <div class="comic-grid">
+    {% for comic in comics %}
+    <div class="comic-item">
+      <a href="4koma/{{ comic | comicFileName }}">
+        <img src="../images/nakayosi-oneesan-tati/{{ comic.image_path }}" 
+             alt="{{ comic.caption }}"
+             loading="lazy">
+        <h3>{{ comic.num }}{% if comic.sub_num %}-{{ comic.sub_num }}{% endif %}話</h3>
+        <p>{{ comic.caption }}</p>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <nav class="pagination" aria-label="ページナビゲーション">
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}" rel="prev">« まえ</a>
+    {% else %}
+      <span class="disabled">« まえ</span>
+    {% endif %}
+
+    {% set currentPage = pagination.pageNumber + 1 %}
+    {% set totalPages = pagination.pages.length %}
+    {% set delta = 2 %}
+    
+    {% if totalPages <= 7 %}
+      {# 7ページ以下の場合は全て表示 #}
+      {% for pageEntry in pagination.pages %}
+        {% if loop.index0 == pagination.pageNumber %}
+          <span class="current" aria-current="page">{{ loop.index }}</span>
+        {% else %}
+          <a href="{{ pagination.hrefs[loop.index0] }}">{{ loop.index }}</a>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {# 最初のページ #}
+      {% if currentPage == 1 %}
+        <span class="current" aria-current="page">1</span>
+      {% else %}
+        <a href="{{ pagination.hrefs[0] }}">1</a>
+      {% endif %}
+      
+      {# 左側の省略記号 #}
+      {% if currentPage > delta + 2 %}
+        <span class="ellipsis">...</span>
+      {% endif %}
+      
+      {# 真ん中のページ群 #}
+      {% for i in range(2, totalPages) %}
+        {% if i >= currentPage - delta and i <= currentPage + delta %}
+          {% if i == currentPage %}
+            <span class="current" aria-current="page">{{ i }}</span>
+          {% else %}
+            <a href="{{ pagination.hrefs[i - 1] }}">{{ i }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      
+      {# 右側の省略記号 #}
+      {% if currentPage < totalPages - delta - 1 %}
+        <span class="ellipsis">...</span>
+      {% endif %}
+      
+      {# 最後のページ #}
+      {% if currentPage == totalPages %}
+        <span class="current" aria-current="page">{{ totalPages }}</span>
+      {% else %}
+        <a href="{{ pagination.hrefs[totalPages - 1] }}">{{ totalPages }}</a>
+      {% endif %}
+    {% endif %}
+
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}" rel="next">つぎ »</a>
+    {% else %}
+      <span class="disabled">つぎ »</span>
+    {% endif %}
+  </nav>
+
+  <nav style="margin-top: 2rem;">
+    <a href="index.html">作品紹介</a>
+    <a href="../index.html">トップ</a>
+  </nav>
+</main>
+

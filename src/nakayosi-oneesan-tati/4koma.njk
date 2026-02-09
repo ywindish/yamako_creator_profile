@@ -1,0 +1,48 @@
+---
+layout: base.njk
+pagination:
+  data: 4koma
+  size: 1
+  alias: comic
+permalink: "nakayosi-oneesan-tati/4koma/{% if comic.sub_num %}{{ comic.num }}-{{ comic.sub_num }}{% else %}{{ comic.num | pad3 }}{% endif %}.html"
+title: "なかよし おねえさんたち - やまこ屋"
+description: "やまこ屋です。大人女性ふたりのまんが「なかよし おねえさんたち」4コマです。"
+ogImage: "https://prof.yamako-ya.com/images/title_cover.jpg"
+cssPath: "../../main.css"
+extraCss: "4koma.css"
+---
+
+<main>
+  <nav>
+    <a href="../../index.html">トップ</a>
+    <a href="../index.html">作品紹介</a>
+    {% set prevComic = 4koma | getPrevComic(pagination.pageNumber) %}
+    {% set nextComic = 4koma | getNextComic(pagination.pageNumber) %}
+    
+    {% if prevComic %}
+    <a href="{{ prevComic | comicFileName }}">まえへ</a>
+    {% endif %}
+    
+    {% if nextComic %}
+    <a href="{{ nextComic | comicFileName }}">つぎへ</a>
+    {% endif %}
+  </nav>
+
+  <div class="manga-area">
+    <h1>{{ comic.num }}{% if comic.sub_num %}-{{ comic.sub_num }}{% endif %}.</h1>
+    <img src="../../../images/nakayosi-oneesan-tati/{{ comic.image_path }}" alt="">
+    <p>{{ comic.caption }}</p>
+  </div>
+
+  <nav>
+    <a href="../../index.html">トップ</a>
+    <a href="../index.html">作品紹介</a>
+    {% if prevComic %}
+    <a href="{{ prevComic | comicFileName }}">まえへ</a>
+    {% endif %}
+    
+    {% if nextComic %}
+    <a href="{{ nextComic | comicFileName }}">つぎへ</a>
+    {% endif %}
+  </nav>
+</main>

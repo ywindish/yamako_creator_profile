@@ -1,0 +1,104 @@
+main {
+  text-align: center;
+}
+
+nav {
+  padding: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+nav a {
+  padding: 0.5rem;
+}
+
+.comic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 1rem 0;
+}
+.comic-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.comic-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.comic-item img {
+  width: 100%;
+  height: 325px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.comic-item h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #333;
+}
+.comic-item p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+.comic-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.pagination a, .pagination span {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  background-color: var(--accent-bg);;
+  transition: all 0.2s;
+}
+.pagination a:hover {
+  background: #f0f0f0;
+  border-color: #999;
+  }
+.pagination .current {
+  background: #333;
+  color: white;
+  border-color: #333;
+  }
+.pagination .ellipsis {
+  border: none;
+  padding: 0.5rem 0.5rem;
+  color: #666;
+  cursor: default;
+}
+.pagination .disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .comic-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .pagination {
+    gap: 0.5rem;
+  }
+  .pagination a, .pagination span {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}

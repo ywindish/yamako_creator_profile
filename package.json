@@ -1,0 +1,17 @@
+{
+  "name": "yamako-creator-profile",
+  "version": "1.0.0",
+  "description": "やまこ屋の作品紹介サイト",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [],
+  "author": "Yamako",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {}
+}
